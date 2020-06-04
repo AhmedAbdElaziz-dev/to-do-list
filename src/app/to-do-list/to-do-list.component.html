@@ -1,0 +1,59 @@
+<div class="container">
+
+  <form class="form-inline mt-2 mb-2" (ngSubmit)="addItem()" #listform="ngForm">
+      <label class="sr-only" for="name">Name</label>
+      <input
+        type="text"
+        class="form-control  mr-sm-2 ml-3"
+        id="name"
+        placeholder="enter your list"
+        name="listName"
+        [(ngModel)]="name"
+      />
+    
+      <label class="sr-only" for="description">Disctiption</label>
+    
+      <input
+        type="text"
+        class="form-control ml-3"
+        id="disctiption"
+        placeholder="description"
+        name="listDiscription"
+        [(ngModel)]="description"
+      />
+      <label class="sr-only" for="description">Date</label>
+    
+      <input
+        type="date"
+        class="form-control ml-2"
+        id="date"
+        placeholder="mm/dd/yyyy"
+        name="listDiscription"
+        [(ngModel)]="date"
+      />
+    
+    
+      <button type="submit" class="btn btn-primary mb-1 ml-3">Add</button>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">discription</th>
+          <th scope="col">date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of toDoList" [ngClass]="{'table-success':item.isDone}">
+          <td>{{ item.name }}</td>
+          <td>{{ item.description }}</td>
+          <td>{{ item.date }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteItem(item.id)">-</button>
+            <button class="btn btn-success ml-2" (click)="isTaskDone(item)">Done</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+</div>

@@ -1,0 +1,46 @@
+<div class="container">
+  <form class="form-inline m-2 " (ngSubmit)="addList()" #listform="ngForm">
+      <label class="sr-only" for="name">Name</label>
+      <input
+        type="text"
+        class="form-control ml-2 mr-sm-2"
+        id="name"
+        placeholder="enter your list"
+        name="listName"
+        [(ngModel)]="name"
+      />
+    
+      <label class="sr-only" for="description">Disctiption</label>
+    
+      <input
+        type="text"
+        class="form-control ml-2"
+        id="disctiption"
+        placeholder="disctiption"
+        name="listDiscription"
+        [(ngModel)]="discription"
+      />
+    
+      <button type="submit" class="btn btn-primary ml-2">Add</button>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">discription</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let list of toDoLists">
+          <td>{{ list.name }}</td>
+          <td>{{ list.description }}</td>
+          <td>
+            <button class="btn btn-danger " (click)="deleteList(list.id)">-</button>
+            <button class="btn btn-primary ml-2"[routerLink]="['/list', list.id]">show</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+
+</div>
